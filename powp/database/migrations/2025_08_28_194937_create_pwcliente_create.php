@@ -33,6 +33,18 @@ return new class extends Migration
             $table->timestamps();
             $table->check('sexo IN ("M", "F", "O")');
         });
+
+        Schema::create('pwcliente_juridico', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('cliente_id')->constrained('pwcliente_create')->onDelete('cascade');
+            $table->string('razao_social', 150);
+            $table->string('nome_fantasia', 100)->nullable();
+            $table->string('cnpj', 18)->unique();
+            $table->string('inscricao_estadual', 20)->nullable();
+            $table->string('inscricao_municipal', 20)->nullable();
+            $table->timestamps();
+
+        });
     }
 
     /**
@@ -41,5 +53,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('pwcliente_create');
+        Schema::dropIfExists('pwcliente_fisico');
+        Schema::dropIfExists('pwcliente_juridico');
     }
 };
