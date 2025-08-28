@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="shortcut icon" href="assets/imagens/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="shortcut icon" href="{{ asset('imagens/favicon-16x16.png') }}" type="image/x-icon">
 </head>
 <body>
     <div class="particles-container">
@@ -87,7 +87,7 @@
                 
                 </form>
                 <div id="version-container">
-                    <p id="version">Version 01.01.02</p>
+                    <p id="version">Version 01.01.03</p>
                 </div>
             </div>
         </section>

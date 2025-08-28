@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERP Modal - Sistema de Gestão para PMEs</title>
     <meta name="description" content="Sistema completo de gestão empresarial para pequenas e médias empresas">
-    <link rel="stylesheet" href="../../public/css/index.css">
-    <link rel="stylesheet" href="css/teste-gratis.css">
-    <link rel="shortcut icon" href="assets/imagens/favicon-16x16.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/teste-gratis.css') }}">
+    <link rel="shortcut icon" href="{{ asset('imagens/favicon-16x16.png') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="nav-buttons" id="navButtons">
-                    <button class="btn btn-outline"><a href="login.html">Login</a></button>
+                    <button class="btn btn-outline"><a href="{{ Route('login') }}">Login</a></button>
                     <button class="btn btn-primary" onclick="testeGratis.openModal()">Teste Grátis</button>
                 </div>
 
@@ -182,9 +182,9 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon"><img src="assets/imagens/Amazon_Web_Services_Logo.svg.png" alt=""></div>
-                    <h3>Integração com AWS</h3>
-                    <p>Integração nativa com AWS, com o Bedrock e demais serviços.</p>
+                    <div class="feature-icon"><img src="{{ asset('imagens/openai.png') }}" alt=""></div>
+                    <h3>Integração com a OpenAi</h3>
+                    <p>Integração nativa com OpenAi, com chat exclusivo.</p>
                 </div>
 
                 <div class="feature-card">
@@ -550,7 +550,7 @@
         </div>
     </div>
 
-    <script src="js/index.js"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
     <script src="js/teste-gratis.js"></script>
 </body>
 </html>
