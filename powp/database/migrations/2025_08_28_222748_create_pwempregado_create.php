@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 150);
             $table->string('cpf', 14)->unique();
+            $table->string('rg', 20)->nullable();
             $table->date('data_nascimento');
             $table->date('data_admissao');
             $table->date('data_demissao')->nullable();
