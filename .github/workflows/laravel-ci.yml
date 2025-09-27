@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main", "master", "develop"]
   pull_request:
-    branches: ["main", "master"] # Fixed extra bracket
+    branches: ["main", "master"]
 
 jobs:
   build-and-test:
@@ -14,7 +14,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_DATABASE: powp
+          MYSQL_DATABASE: laravel_test
           MYSQL_ROOT_PASSWORD: root 
         ports:
           - 3306:3306
@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2 # Fixed typo in shivammathur
+        uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
           extensions: mbstring, dom, fileinfo, mysql, pdo_mysql, curl, zip
@@ -38,21 +38,21 @@ jobs:
         run: cp .env.example .env
 
       - name: Install Composer Dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
       - name: Generate Application Key
         run: php artisan key:generate 
 
       - name: Set up database environment
-        run: |  # Added pipe character for multiple commands
+        run: |
           sed -i 's/DB_HOST=127.0.0.1/DB_HOST=127.0.0.1/' .env    
           sed -i 's/DB_PORT=3306/DB_PORT=3306/' .env
-          sed -i 's/DB_DATABASE=laravel_test/DB_DATABASE=laravel_test/' .env
+          sed -i 's/DB_DATABASE=laravel/DB_DATABASE=laravel_test/' .env
           sed -i 's/DB_USERNAME=root/DB_USERNAME=root/' .env
-          sed -i 's/DB_PASSWORD=root/DB_PASSWORD=root/' .env
+          sed -i 's/DB_PASSWORD=/DB_PASSWORD=root/' .env
 
       - name: Run Database Migrations
         run: php artisan migrate --force
 
       - name: Run Tests
-        run: php artisan test # Fixed typo in artisan
+        run: php artisan test
