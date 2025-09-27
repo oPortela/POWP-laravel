@@ -28,9 +28,9 @@ return new class extends Migration
             $table->date('data_nascimento');
             $table->string('rg', 20)->nullable();
             $table->string('orgao_expedidor', 20)->nullable();
-            $table->string('sexo', 1)->nullable();
+            $table->enum('sexo', ['M', 'F', 'O'])->nullable();
+
             $table->timestamps();
-            $table->check('sexo', ["M", "F", "O"]);
         });
 
         Schema::create('pwcliente_juridico', function (Blueprint $table) {
@@ -42,7 +42,6 @@ return new class extends Migration
             $table->string('inscricao_estadual', 20)->nullable();
             $table->string('inscricao_municipal', 20)->nullable();
             $table->timestamps();
-
         });
     }
 
@@ -51,8 +50,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pwcliente_create');
-        Schema::dropIfExists('pwcliente_fisico');
         Schema::dropIfExists('pwcliente_juridico');
+        Schema::dropIfExists('pwcliente_fisico');
+        Schema::dropIfExists('pwcliente_create');
     }
 };
