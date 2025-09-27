@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('pwcliente_create', function (Blueprint $table) {
             $table->id();
             $table->date('data_cadastro');
-            $table->char('tipo_pessoa', 1);
+            $table->enum('tipo_pessoa', ["F", "J"]);
             $table->text('observacoes')->nullable();
             $table->timestamps();
-            $table->enum('tipo_pessoa', ["F", "J"]);
         });
 
         Schema::create('pwcliente_fisico', function (Blueprint $table) {
