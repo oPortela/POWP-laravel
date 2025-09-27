@@ -103,7 +103,7 @@ jobs:
             --exclude='vendor' \
             ./ user@your.server.com:/path/to/app
 
-      - name: On server: composer install & migrate & cache
+      - name: "On server: composer install & migrate & cache"
         run: |
           ssh user@your.server.com "\
             cd /path/to/app && \
