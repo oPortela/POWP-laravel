@@ -17,7 +17,7 @@ return new class extends Migration
             $table->char('tipo_pessoa', 1);
             $table->text('observacoes')->nullable();
             $table->timestamps();
-            $table->check('tipo_pessoa IN ("F", "J")');
+            $table->enum('tipo_pessoa', ["F", "J"]);
         });
 
         Schema::create('pwcliente_fisico', function (Blueprint $table) {
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('orgao_expedidor', 20)->nullable();
             $table->string('sexo', 1)->nullable();
             $table->timestamps();
-            $table->check('sexo IN ("M", "F", "O")');
+            $table->check('sexo', []"M", "F", "O"]);
         });
 
         Schema::create('pwcliente_juridico', function (Blueprint $table) {
