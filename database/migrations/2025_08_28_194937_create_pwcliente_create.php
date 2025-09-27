@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('orgao_expedidor', 20)->nullable();
             $table->string('sexo', 1)->nullable();
             $table->timestamps();
-            $table->check('sexo', []"M", "F", "O"]);
+            $table->check('sexo', ["M", "F", "O"]);
         });
 
         Schema::create('pwcliente_juridico', function (Blueprint $table) {
