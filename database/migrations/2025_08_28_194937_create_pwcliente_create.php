@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pwcliente_create', function (Blueprint $table) {
-            $table->bigIncrements('codcliente'); // Chave primária
+            // Usar id() é a forma mais moderna de definir a chave primária.
+            $table->id('codcliente');
             $table->date('data_cadastro');
             $table->enum('tipo_pessoa', ["F", "J"]);
             $table->text('observacoes')->nullable();
@@ -21,7 +22,8 @@ return new class extends Migration
 
         Schema::create('pwcliente_fisico', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('codcliente')->constrained('pwcliente_create')->onDelete('cascade');
+            // CORREÇÃO APLICADA AQUI
+            $table->foreignId('codcliente')->constrained(table: 'pwcliente_create', column: 'codcliente')->onDelete('cascade');
             $table->string('nome', 100);
             $table->string('sobrenome', 100);
             $table->string('cpf', 14)->unique();
@@ -29,13 +31,13 @@ return new class extends Migration
             $table->string('rg', 20)->nullable();
             $table->string('orgao_expedidor', 20)->nullable();
             $table->enum('sexo', ['M', 'F', 'O'])->nullable();
-
             $table->timestamps();
         });
 
         Schema::create('pwcliente_juridico', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('codcliente')->constrained('pwcliente_create')->onDelete('cascade');
+            // CORREÇÃO APLICADA AQUI
+            $table->foreignId('codcliente')->constrained(table: 'pwcliente_create', column: 'codcliente')->onDelete('cascade');
             $table->string('razao_social', 150);
             $table->string('nome_fantasia', 100)->nullable();
             $table->string('cnpj', 18)->unique();
