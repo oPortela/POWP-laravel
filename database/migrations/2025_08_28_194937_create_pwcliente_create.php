@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pwcliente_create', function (Blueprint $table) {
+        Schema::create('pwcliente', function (Blueprint $table) {
             // Usar id() é a forma mais moderna de definir a chave primária.
             $table->id('codcliente');
             $table->date('data_cadastro');
@@ -23,7 +23,7 @@ return new class extends Migration
         Schema::create('pwcliente_fisico', function (Blueprint $table) {
             $table->id();
             // CORREÇÃO APLICADA AQUI
-            $table->foreignId('codcliente')->constrained(table: 'pwcliente_create', column: 'codcliente')->onDelete('cascade');
+            $table->foreignId('codcliente')->constrained(table: 'pwcliente', column: 'codcliente')->onDelete('cascade');
             $table->string('nome', 100);
             $table->string('sobrenome', 100);
             $table->string('cpf', 14)->unique();
@@ -37,7 +37,7 @@ return new class extends Migration
         Schema::create('pwcliente_juridico', function (Blueprint $table) {
             $table->id();
             // CORREÇÃO APLICADA AQUI
-            $table->foreignId('codcliente')->constrained(table: 'pwcliente_create', column: 'codcliente')->onDelete('cascade');
+            $table->foreignId('codcliente')->constrained(table: 'pwcliente', column: 'codcliente')->onDelete('cascade');
             $table->string('razao_social', 150);
             $table->string('nome_fantasia', 100)->nullable();
             $table->string('cnpj', 18)->unique();
