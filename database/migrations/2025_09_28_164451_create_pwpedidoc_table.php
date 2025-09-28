@@ -26,8 +26,8 @@ return new class extends Migration
             $table->decimal('vltotal', 18, 4);
             $table->decimal('vldesconto', 18, 4);
 
-            $table->unsignedBigInteger('codplpagamento');
-            $table->foreign('codplpagamento')->references('codplpagamento')->on('pwplanopag');
+            $table->unsignedBigInteger('codplano');
+            $table->foreign('codplano')->references('codplano')->on('pwplanos');
 
             $table->string('obs', 250);
             $table->timestamps();
