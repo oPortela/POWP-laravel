@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pwempregado', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('codempregado'); // Chave primária
             $table->string('nome', 150);
             $table->string('cpf', 14)->unique();
             $table->string('rg', 20)->nullable();
