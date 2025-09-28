@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pwplanos', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('codplano'); // Chave primária
             $table->string('nome', 100)->unique();
             $table->text('descricao')->nullable();
             $table->decimal('valor', 8, 2);
