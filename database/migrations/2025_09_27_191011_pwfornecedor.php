@@ -24,7 +24,8 @@ return new class extends Migration
 
             // Chaves estrangeiras
             $table->foreign('codendereco')->references('codendereco')->on('pwendereco');
-            $table->foreign('codtelefone')->references('codtelefone')->on('pwtelefone');
+            // Linha correta
+            $table->foreign('codtelefone')->references('codtelefone')->on('pwtelefones');
         });
     }
 
