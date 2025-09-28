@@ -19,8 +19,8 @@ return new class extends Migration
             $table->date('data_nascimento');
             $table->date('data_admissao');
             $table->date('data_demissao')->nullable();
-            $table->foreignId('contato_id')->constrained('pwcontato')->onDelete('cascade');
-            $table->foreignId('endereco_id')->constrained('pwendereco')->onDelete('cascade');
+            $table->foreignId('contato_id')->constrained('pwcontato_create')->onDelete('cascade');
+            $table->foreignId('endereco_id')->constrained('pwendereco_create')->onDelete('cascade');
             $table->string('cargo', 100);
             $table->string('salario', 10);
             $table->text('descricao')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pwempregado_create');
+        Schema::dropIfExists('pwempregado');
     }
 };
