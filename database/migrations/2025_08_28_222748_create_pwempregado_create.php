@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pwempregado_create', function (Blueprint $table) {
-            $table->id();
+        Schema::create('pwempregado', function (Blueprint $table) {
+            $table->bigIncrements('codempregado'); // Chave primária
             $table->string('nome', 150);
             $table->string('cpf', 14)->unique();
             $table->string('rg', 20)->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pwempregado_create');
+        Schema::dropIfExists('pwempregado');
     }
 };
