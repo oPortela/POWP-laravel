@@ -17,8 +17,40 @@ class DashboardVendaController extends Controller
         $this->key = env('SUPABASE_KEY');
     }
 
-    public function getSalesData() {
+    public function getSalesValueToday(): JsonResponse 
+    {
+        $tableName = 'vw_sales_today';
+        $today = Carbon::now()->format('Y-m-d');
 
+        try {
+            $response = Http::withHeaders([
+                'apikey' => $this->key,
+                'authorization' => "Bearer {$this->key}",
+            
+            ])->get("{$this->url}/rest/v1/{$tableName}", [
+                'select' => 'total',
+                //'select' => 'total:sum(vltotal)', 
+                'dia' => "eq.$today",
+            ]);
+
+            if ($response->failed()) {
+                return response()->json(['error' => 'Falha ao buscar valor de vendas', 'details' => $response->json()], 500);
+            }
+
+            $data = $response->json();
+
+            $totalValue = !empty($data) ? $data[0]['total'] : 0;
+
+            return response()->json([
+                'sales_value_today' => (float) $totalValue
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Erro interno do servidor',
+                'message' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     public function getSalesToday(): JsonResponse {
@@ -97,6 +129,54 @@ class DashboardVendaController extends Controller
             ]);
 
         } catch (\Exception $e) {
+            return response()->json([
+                'error' => 'Erro interno do servidor',
+                'message' => $e->getMessage(),
+                500
+            ]);
+        }
+    }
+
+    public function getSalesChartData(): JsonResponse {
+        try {
+            $response = Http::withMiddleware([
+                'apikey' => $this->key,
+                'authorization' => "bearer {$this->key}",
+            ])->post("{$this->url}/rpc/comparativo_vendas_diarias", [
+                'dias_atras' => 5
+            ]);
+
+            if ($response->failed()) {
+                return response()->json([
+                    'error' => 'Falha ao buscar dados do gráfico',
+                    'details' => $response->json()
+                ], 500);
+            }
+
+            $salesDataFromDB = $response->json();   
+
+            $labels = [];
+            $data = [];
+            $salesByDate = [];
+
+            foreach ($salesDataFromDB as $row) {
+                $salesByDate[$row['dia']] = $row['total'];
+            }
+
+            for ($i=4; $i>=0; $i--) { 
+                $date = Carbon::now()->subDays($i);
+                $dateString = $date->format('Y-m-d');
+
+                $labels[] = $date->translatedFormat('j \d\e M.');
+                $data[] = $salesByDate[$dateString] ?? 0;
+            }
+
+            return response()->json([
+                'labels' => $labels,
+                'data' => $data,
+            ]);
+
+        }catch (\Exception $e) {
             return response()->json([
                 'error' => 'Erro interno do servidor',
                 'message' => $e->getMessage(),
