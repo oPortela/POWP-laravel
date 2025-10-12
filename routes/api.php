@@ -9,3 +9,5 @@ Route::get('/dados-qt-vendas-hoje', [DashboardVendaController::class, 'getSalesT
 Route::get('/dados-valor-vendas-hoje', [DashboardVendaController::class, 'getSalesValueToday']);
 
 Route::get('/dados-dashboard-vendas', [DashboardVendaController::class, 'getSalesChartData']);
+
+Route::get('/sales-comparison', [DashboardVendaController::class, 'salesComparison']);
