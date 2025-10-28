@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreFornecedorRequest extends FormRequest
 {
@@ -27,6 +28,8 @@ class StoreFornecedorRequest extends FormRequest
             'fornecedor' => 'required|string|max:255',
             'fantasia' => 'nullable|string|max:255',
             'email' => 'required|string|max:255',//|unique:pwfornecedor, email',
+
+            //Rule::unique('pwfornecedor')->ignore($supplierId, 'codfornecedor')
 
             //Campos PWENDERECO
             'cep' => 'required|string|max:9',

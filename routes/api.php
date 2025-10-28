@@ -18,4 +18,8 @@ Route::get('/sales-comparison', [DashboardVendaController::class, 'salesComparis
 Route::prefix('fornecedores')->group(function () {
     Route::post('', [FornecedorController::class, 'store']);
     Route::get('', [FornecedorController::class, 'index']);
+    Route::delete('/{id}', [FornecedorController::class, 'destroy']);
+
+    Route::get('/{id}', [FornecedorController::class, 'show']);
+    Route::put('/{id}', [FornecedorController::class, 'update']);
 });
