@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardVendaController;
 use App\Http\Controllers\FornecedorController;
 use Illuminate\Http\Request;
@@ -22,4 +23,9 @@ Route::prefix('fornecedores')->group(function () {
 
     Route::get('/{id}', [FornecedorController::class, 'show']);
     Route::put('/{id}', [FornecedorController::class, 'update']);
+});
+
+Route::prefix('clientes')->group(function () {
+    Route::delete('/{id}', [ClienteController::class, 'destroy']);
+    Route::post('', [ClienteController::class, 'store']);
 });

@@ -2,22 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Pwcliente extends Model
 {
+    use HasFactory;
 
-    protected $primaryKey = 'id';
-
+    protected $table = 'pwcliente';
+    protected $primaryKey = 'codcliente';
+    public $timestamps = false;
     protected $fillable = [
-        'data_cadastro',
-        'tipo_pessoa',
-        'observacoes'
+        'codcliente',
+        'cliente',
+        'fantasia',
+        'dtcadastro',
+        'tipopessoa',
+        'email',
+        'codtelefone',
+        'codendereco',
+        'obs',
+        'bloqueio',
+        'motivo_bloq'
     ];
-
-    protected $casts = [
-        'data_cadastro' => 'date',
-    ];
-
 }
