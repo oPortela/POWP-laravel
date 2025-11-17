@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\DashboardVendaController;
 use App\Http\Controllers\FornecedorController;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,9 @@ Route::prefix('fornecedores')->group(function () {
 
 Route::prefix('clientes')->group(function () {
     Route::delete('/{id}', [ClienteController::class, 'destroy']);
+    Route::put('/{id}', [ClienteController::class, 'update']);
     Route::post('', [ClienteController::class, 'store']);
+
+    Route::get('', [ClienteController::class, 'index']);
+    Route::get('/{id}', [ClienteController::class, 'show']);
 });
