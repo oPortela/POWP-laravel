@@ -11,7 +11,7 @@ class StoreProdutoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class StoreProdutoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            //Campos PWPRODUTO
+            'descricao' => 'required|string|max:255',
+            'embalagem' => 'required|string',
+            'ean' => 'required|string|max:20',
+            'dtcadastro' => 'required|date',
+            'pcusto' => 'required',
+            'pvenda' => 'required',
+
+            //Campo PWESTOQUE
+            'qt_atual' => 'required',
+            'qt_minima' => 'required'
         ];
     }
 }
