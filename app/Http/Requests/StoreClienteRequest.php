@@ -55,18 +55,3 @@ class StoreClienteRequest extends FormRequest
         ];
     }
 }
-
-/*
-create table public.pwcliente (
-  codcliente bigint not null,
-  cliente character varying(200) not null,
-  fantasia character varying(200) not null,
-  dtcadastro date not null,
-  tipopessoa character varying(1) not null,
-  codtelefone bigint not null,
-  codendereco bigint not null,
-  obs character varying(250) null,
-  bloqueio character varying(1) not null,
-  constraint pwcliente_pkey primary key (codcliente)
-) TABLESPACE pg_default;
-*/
