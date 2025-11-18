@@ -34,3 +34,7 @@ Route::prefix('clientes')->group(function () {
     Route::get('', [ClienteController::class, 'index']);
     Route::get('/{id}', [ClienteController::class, 'show']);
 });
+
+Route::prefix('produtos')->group(function () {
+    
+});

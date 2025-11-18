@@ -29,8 +29,8 @@ class ClienteController extends Controller
             $page = $request->input('page', 1);
             $offset = ($page - 1) * $perPage;
 
-            $selectQuery = '*, pwenrecedo(*), pwtelefone(*), pwclientefisico(*), pwclientejuridico(*)';
-            $orderBy = 'codcliente.asc';
+            $selectQuery = '*, pwendereco(*), pwtelefone(*), pwclientefisico(*), pwclientejuridico(*)';
+            $orderBy = 'codcliente.desc';
 
             $response = Http::withHeaders([
                 'apikey' => $this->supabaseKey,
@@ -199,12 +199,12 @@ class ClienteController extends Controller
             }
 
             $cliente = $data[0];
-
-            if (!empty($cliente['pwclientefisico'])) {
+            
+            if (!empty($cliente['pwclientefisico']) && is_array($cliente['pwclientefisico']) && isset($cliente['pwclientefisico'][0])) {
                 $cliente['pwclientefisico'] = $cliente['pwclientefisico'][0];
-            }
+            } 
 
-            if (!empty($cliente['pwclientejuridico'])) {
+            if (!empty($cliente['pwclientejuridico']) && is_array($cliente['pwclientejuridico']) && isset($cliente['pwclientejuridico'][0])) {
                 $cliente['pwclientejuridico'] = $cliente['pwclientejuridico'][0];
             }
 

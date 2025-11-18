@@ -37,7 +37,7 @@ class StoreClienteRequest extends FormRequest
             'dt_nascimento' => 'nullable|date',
 
             //Campos PWCLIENTE_JURIDICO
-            'cnpj' => 'nullable|string|size:18',
+            'cnpj' => 'nullable|string|size:14',
             'inscricaoestadual' => 'nullable|string|max:20',
             'dtabertura' => 'nullable|date',
 
