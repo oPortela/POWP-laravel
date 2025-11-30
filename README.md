@@ -1,60 +1,107 @@
-# 🌟 Welcome to the Future of Business Management with POWP ERP!
+# 🔌 POWP ERP – Backend API (Laravel)
 
 # POWP ERP
 
-**POWP ERP** is an innovative solution that propels freelancers, small, and medium-sized businesses toward new levels of **efficiency**, **organization**, and **productivity**.
-<a href="https://oportela.github.io/POWP/Powp/index.html">Landing Page</a>
+This repository contains the official API of the POWP ERP, a modular system designed for freelancers, small businesses, and medium-sized companies seeking organization, efficiency, and productivity in their daily operations.
 
-Designed with a modular approach, POWP allows each user to customize their experience by selecting only the modules that best meet their business needs. Our goal is to offer an **intuitive**, **flexible**, and **straightforward** system, ready to help your company grow with agility and security.
+The API was built using Laravel, providing a secure, scalable, and flexible backend to support all POWP ERP modules.
+
+🔗 Front-end Repository
+
+👉 https://github.com/oPortela/POWP
+
+🌐 Landing Page
+
+👉 https://oportela.github.io/POWP/Powp/index.html
 
 ---
 
-## ✨ Key Features
-- **Modularity**: use only the modules you need.
-- **Simplicity**: user-friendly interface designed for daily business activities.
-- **Customization**: easily adaptable to different types and sizes of businesses.
-- **Real Results**: focused on boosting your productivity without bureaucracy.
+## 🚀 About POWP ERP
+POWP ERP is a modular system where each user selects only the modules that fit their business needs.
+Our goal is to deliver a system that is:
+
+- Simple to use
+- Intuitive in its workflow
+- Modular and fully customizable
+- Secure, scalable, and ready to grow with your company
+
+---
+
+##✨ What This API Does
+The Laravel API is responsible for:
+
+- 🔐 User authentication & account management
+- 🗂️ Data processing for ERP modules
+- 🔄 Communication with Supabase via REST API
+- 📦 Structured responses for the front-end
+- 🧱 REST architecture with modern best practices
+- 📜 Centralized business logic, validation, and logging
 
 ---
 
 ## 🛠️ Technologies Used
-- HTML and CSS <img align="center" alt="oPortela-HTML" height="15" width="20" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"> <img align="center" alt="oPortela-CSS" height="15" width="20" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-- JavaScript <img align="center" alt="oPortela-Js" height="15" width="20" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
-- React <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="20" height="20"/>
-- MySQL <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" width="20" height="20"/>
-- Python/Django <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="20" height="20"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" width="20" height="20"/>
-- PHP/Laravel <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" alt="PHP" width="20" height="20"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" alt="Laravel" width="20" height="20"/>
+- PHP / Laravel <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" width="35"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" width="35"/>
+- Supabase (PostgreSQL via REST API) <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" width="35"/>
+- JWT / Sanctum Authentication
+- MVC Architecture
+- RESTful API Design
 
 ---
 
 ## 🚀 Installation and Setup
 
 **Requirements**
-- Python 3.10+
-- Configured PostgreSQL database
+- PHP 8.1+
+- Composer
+- Laravel 10+
+- Supabase project configured
+- Supabase REST API keys
 
 **Steps**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/oPortela/powp.git
+   git clone https://github.com/oPortela/POWP-laravel.git
+   cd POWP-laravel
    ```
 
-2. Navigate to the project directory:
+2. Install dependencies
    ```bash
-   cd powp
+   composer install
    ```
 
-3. Install the dependencies:
+3. Configure your .env file
+   Create or edit the .env file:
    ```bash
-   npm install
+   nAPP_NAME=POWP
+   APP_ENV=local
+   APP_KEY=base64:xxxxxx
+   APP_DEBUG=true
+   APP_URL=http://localhost:8000
+    
+   # Supabase (REST API)
+   SUPABASE_URL=https://xxxx.supabase.co
+   SUPABASE_KEY=public_key
+   SUPABASE_SERVICE_KEY=private_service_key_if_needed
    ```
 
-4. Configure your environment variables (.env file).
-
-5. Run the application:
+5. Generate the application key
    ```bash
-   npm start
+   php artisan key:generate
    ```
+
+7. Run the server:
+   ```bash
+   php artisan serve
+   ```
+- Your API will be available at:
+
+- 👉 http://localhost:8000
+
+---
+
+##📡 Endpoints
+Full endpoint documentation will be added soon (Swagger / API Documentation).
+If you want, I can generate it automatically for you.
 
 ---
 
